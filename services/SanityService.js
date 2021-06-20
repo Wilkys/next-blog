@@ -3,7 +3,7 @@ import sanityClient from '@sanity/client';
 export default class SanityService {
   _client = sanityClient({
     dataset: 'production',
-    projectId: 'ozi5ivc6',  // sanity.io에 접속하여 프로젝트의 ID를 확인한다.
+    projectId: process.env.SANITY_PROJECT_ID,  // sanity.io에 접속하여 프로젝트의 ID를 확인한다.
     useCdn: process.env.NODE_ENV === 'production',  // production 모드일 경우 cdn 사용
   });
 
