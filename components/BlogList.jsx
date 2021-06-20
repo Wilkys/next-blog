@@ -1,6 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
+/* eslint-disable @next/next/link-passhref */
 /* eslint-disable react/jsx-key */
-// import { Card, Row, Col } from "antd";
 import dayjs from "dayjs";
 import Link from "next/link";
 import styled from 'styled-components';
@@ -22,12 +21,8 @@ export default function BlogList({posts}) {
   return (
     <Wrapper>
       {posts.map(post =>{
-        return (          
-            <div>
-              <CardEl post={post} />
-              {/* <h3>{post.title}</h3>                    
-              <h4>{post.author.name} · {dayjs(post.createdAt).format('MMMM D')}</h4> */}
-            </div>          
+        return (                      
+          <CardEl post={post} />            
         )
       })}
     </Wrapper>
