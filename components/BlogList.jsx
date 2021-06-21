@@ -37,6 +37,7 @@ const ImageBox = styled.div`
 `;
 const Card = styled.div`
   margin: 5px;
+  cursor: pointer;
 `;
 const Wrapper = styled.div`
   display: flex;  

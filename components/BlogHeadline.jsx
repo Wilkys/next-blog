@@ -1,6 +1,4 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Row, Col } from 'antd';
-import Button from './Button';
 import styled from 'styled-components';
 
 
@@ -30,6 +28,4 @@ const Wrapper = styled.div`
 const Spacer = styled.div`
   height: 4rem;
 `;
-const StyledButton=styled(Button)`
-  width: 150px;
-`;
+

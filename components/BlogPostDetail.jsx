@@ -2,10 +2,15 @@
 import {Col, Row } from 'antd'
 import BlockContent from '@sanity/block-content-to-react'
 import SyntaxHighlighter from 'react-syntax-highlighter'
+import Image from 'next/image'
+import sanityImageUrl from '@sanity/image-url';
+import sanityClient from '@sanity/client';
+
 
 const serializers = {
   types: {
     code: ({node}) => {
+      console.log(node);
       const { code } = node;
       return (
         <SyntaxHighlighter 
@@ -15,13 +20,16 @@ const serializers = {
       )
     },
     video: ({ node }) => {
+      console.log(node);
       return <p>video</p>
     },
     link: ({ node }) => {
+      console.log(node);
       return <p>link</p>
     },
-    imageGallery: ({ node }) => {
-      return <p>imageGallery</p>
+    imageGallery: ({ node }) => {   
+      console.log(node);   
+      return <p>Image Gallery</p>
     },
   }
 }
@@ -29,14 +37,17 @@ const serializers = {
 export default function BlogPostDetail({blocks}) {
   return (
     <>
-      <Col span={24}>
-        <BlockContent 
-          blocks={blocks}
-          projectId= {process.env.SANITY_PROJECT_ID}
-          dataset="production"  
-          serializers={serializers}
-        />
-      </Col>
+      <Row>
+        <Col span={24}>
+          <BlockContent 
+            blocks={blocks}
+            projectId= {process.env.SANITY_PROJECT_ID}
+            dataset="production"  
+            imageOptions={{w: 640, h:480, fit: 'max'}}
+            serializers={serializers}
+          />
+        </Col>
+      </Row>
     </>
   )
 }

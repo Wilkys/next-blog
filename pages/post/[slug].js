@@ -9,11 +9,11 @@ import styles from '../../styles/Home.module.css';
 export default function PostAll({slug, post}) {
   return (
     <div className={styles.container}>
-    <Header />
-    <BlogMainPost {...post} />
-    <BlogPostDetail blocks={post.content} />
-    <Footer />
-  </div>
+      <Header />
+      <BlogMainPost {...post} />
+      <BlogPostDetail blocks={post.content} />
+      <Footer />
+    </div>
   );
 };
 
