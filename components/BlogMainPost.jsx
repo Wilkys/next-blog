@@ -1,63 +1,53 @@
 /* eslint-disable @next/next/no-img-element */
-import { Card, Col, Row } from 'antd';
 import Link from 'next/link';
 import dayjs from 'dayjs';
 import styled from 'styled-components';
 
 export default function BlogMainPost({slug, thumbnail, title, subtitle, author, createdAt}) {
-  return (
-    <Row
-      align="middle"
-      style={{
-        height: 'auto',
-      }}
-    >
-      <Col span={24}>
+  return (    
         <Link href={`/post/${slug}`}>
           <a>
-          <TitleDiv>
-            <Card 
-              style={{border: 'none',  width:'80px'}}
-              cover={<img alt={thumbnail.alt} src={thumbnail.imageUrl}></img>}
-            >
-            </Card>
-
-            <SubDiv>
-              <h1>{title}</h1>
-              <DateDiv>
-                <h3>{subtitle}</h3>
-                <h4>{author.name} · {dayjs(createdAt).format('MMMM D')}</h4>
-              </DateDiv>
-            </SubDiv>
-          </TitleDiv>    
-
-          <Spacer />    
-
+          <Wrapper>            
+              <ImageBox src={thumbnail.imageUrl} alt={thumbnail.alt} />
+              <TitleBox>
+                <h1>{title}</h1>
+                <div className="subtitle">
+                  <h3>{subtitle}</h3>
+                  <h4>{author.name} · {dayjs(createdAt).format('MMMM D')}</h4>
+                </div>  
+              </TitleBox>          
+          </Wrapper> 
+          <Spacer />   
           </a>
-        </Link>
-      </Col>
-    </Row>
+        </Link>   
   )
 }
 
-const TitleDiv = styled.div`
-  display: flex;
-  width: 100%;
-  align-items: center;
+const Wrapper = styled.div`
+  width: 800px; 
+  margin: 0 auto;
+`;
+const ImageBox = styled.img`  
+  width: 100%;  
+  background-image: url(${props => props.src});  
+  background-size: cover;
+  background-position: center;
+  position: relative;  
+  display: block;
+  margin: 0 auto;
 `;
 
-const SubDiv = styled.div`  
+const TitleBox = styled.div`  
   width: 100%;
   margin-left: 10px;
-`;
-const DateDiv = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  position: relative;
-    
-  & h4 {
+  .subtitle{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    position: relative;
+    & h4 {
     margin-right: 30px;
+  }
   }
 `;
 const Spacer = styled.div`

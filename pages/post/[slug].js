@@ -1,7 +1,7 @@
 import React from 'react';
-import BlogMainPost from '../../components/BlogMainPost';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
+import BlogPostTitle from '../../components/BlogPostTitle';
 import BlogPostDetail from '../../components/BlogPostDetail';
 import SanityService from '../../services/SanityService';
 import styles from '../../styles/Home.module.css';
@@ -10,7 +10,7 @@ export default function PostAll({slug, post}) {
   return (
     <div className={styles.container}>
       <Header />
-      <BlogMainPost {...post} />
+      <BlogPostTitle {...post} />
       <BlogPostDetail blocks={post.content} />
       <Footer />
     </div>
